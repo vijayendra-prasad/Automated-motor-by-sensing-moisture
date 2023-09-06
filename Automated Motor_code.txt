@@ -1,6 +1,12 @@
+Project title:Automated-motor-by-sensing-moisture
+Author : Vijayendra Prasad
+College name : VR Siddhartha Engineering College
+
+
+
 #define BLYNK_TEMPLATE_ID "TMPLvGX6VuM7"
 #define BLYNK_DEVICE_NAME "moisture"
-#define BLYNK_AUTH_TOKEN "7WA_ATnojUxNug8yxOsa8BisvIjYvuP3"
+#define BLYNK_AUTH_TOKEN "7WA_ATnojUxNug8yxOsa8BisvIjYvuP3"    //received in email or in app 
 #define BLYNK_PRINT Serial
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
@@ -17,8 +23,8 @@ char auth[] = "7WA_ATnojUxNug8yxOsa8BisvIjYvuP3";
 const int sensorPin = 4; 
 int sensorState = 0;
 int lastState = 0;
-char ssid[] = "Redmi 9 Prime";// wifi Device name
-char pass[] = "12345678"; // password
+char ssid[] = "Redmi 9 Prime";    // wifi Device name
+char pass[] = "12345678";         // password
 BlynkTimer timer; 
 #include <SPI.h>
 #include <Wire.h>
@@ -44,7 +50,7 @@ void myTimer()
 void setup()
 {
   Serial.begin(9600);
-  Blynk.begin(auth, ssid, pass);  //wifi name and password
+  Blynk.begin(auth, ssid, pass);         //wifi name and password
   pinMode(relayPin, OUTPUT);
   pinMode(sensor_pin, INPUT);
   Serial.println("Reading From the Sensor ...");
@@ -79,9 +85,9 @@ else if (output_value>60)
   digitalWrite(relayPin, LOW);       
  }
  if (output_value<20) {
-  Serial.println("needs water, send notification");
-   Blynk.email("maniachi954@gmail.com", "Alert", "water status:less water");
-    Blynk.logEvent("water status:","less water ");
+  Serial.println("needs water, send notification");   // message 
+   Blynk.email("maniachi954@gmail.com", "Alert", "water status:less water");  // email used in blynk app creation  
+   Blynk.logEvent("water status:","less water ");
     delay(1000);
  }
 
